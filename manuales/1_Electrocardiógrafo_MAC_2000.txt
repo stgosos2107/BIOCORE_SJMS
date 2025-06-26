@@ -1,0 +1,12 @@
+Manual de Usuario
+Equipo: Electrocardiógrafo MAC 2000
+Marca: GE Healthcare
+
+Instrucciones generales:
+- Encendido y apagado del equipo.
+- Configuración de parámetros operativos.
+- Recomendaciones de mantenimiento preventivo.
+- Protocolos de seguridad y advertencias.
+- Información técnica detallada.
+
+Fecha de creación: 2025-06-26

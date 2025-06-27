@@ -44,7 +44,7 @@ def ver_mantenimientos():
     except mysql.connector.Error as err:
         print(f"❌ Error al consultar mantenimientos: {err}")
 
-def actualizar_mantenimiento(mantenimiento_id, campo, nuevo_valor):
+def actualizar_mantenimiento(mmto_id, campo, nuevo_valor):
     """
     Actualiza un campo de un mantenimiento registrado.
 
@@ -56,8 +56,8 @@ def actualizar_mantenimiento(mantenimiento_id, campo, nuevo_valor):
     try:
         conn = conexion()
         cursor = conn.cursor()
-        query = f"UPDATE mantenimientos SET {campo} = %s WHERE mantenimiento_id = %s"
-        cursor.execute(query, (nuevo_valor, mantenimiento_id))
+        query = f"UPDATE mantenimientos SET {campo} = %s WHERE mmto_id = %s"
+        cursor.execute(query, (nuevo_valor, mmto_id))
         conn.commit()
         cursor.close()
         conn.close()
@@ -65,7 +65,7 @@ def actualizar_mantenimiento(mantenimiento_id, campo, nuevo_valor):
     except mysql.connector.Error as err:
         print(f"❌ Error al actualizar mantenimiento: {err}")
 
-def eliminar_mantenimiento(mantenimiento_id):
+def eliminar_mantenimiento(mmto_id):
     """
     Elimina un mantenimiento por su ID.
 
@@ -76,7 +76,7 @@ def eliminar_mantenimiento(mantenimiento_id):
         conn = conexion()
         cursor = conn.cursor()
         query = "DELETE FROM mantenimientos WHERE mantenimiento_id = %s"
-        cursor.execute(query, (mantenimiento_id,))
+        cursor.execute(query, (mmto_id,))
         conn.commit()
         cursor.close()
         conn.close()

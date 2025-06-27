@@ -4,11 +4,11 @@
 from database.conexion_mongo import conectar_mongo
 from datetime import datetime
 
-#Función para subir un reporte técnico a MongoDB
 def subir_reporte_tecnico(tecnico_id):
+
     coleccion = conectar_mongo()
     if not coleccion:
-        print("No se pudo acceder a la base de datos.")
+        print(" No se pudo acceder a la base de datos.")
         return
 
     try:
@@ -18,6 +18,7 @@ def subir_reporte_tecnico(tecnico_id):
         tipo_reporte = input("Tipo de reporte (Preventivo/Correctivo): ")
         resumen = input("Resumen del mantenimiento: ")
 
+        # Notas técnicas
         notas_tecnicas = []
         print("Ingrese las notas técnicas (escriba 'fin' para terminar):")
         while True:
@@ -28,13 +29,31 @@ def subir_reporte_tecnico(tecnico_id):
 
         estado = input("Estado del equipo tras el mantenimiento: ")
 
+        # Rutas
         rutas = {
             "imagen_antes": input("Ruta imagen antes: "),
             "imagen_despues": input("Ruta imagen después: "),
             "reporte_pdf": input("Ruta del PDF del reporte: "),
-            "guia_pdf": input("Ruta de la guía rápida: "),
             "manual_pdf": input("Ruta del manual técnico: ")
         }
+
+        # Bitácora
+        bitacora = {
+            "fecha_inicio": input("Fecha de inicio de la bitácora (YYYY-MM-DD): "),
+            "registro_por": tecnico_id,
+            "entradas": []
+        }
+
+        print("Ingrese los eventos de la bitácora (escriba 'fin' para terminar):")
+        while True:
+            fecha_evento = input("Fecha y hora del evento (YYYY-MM-DDTHH:MM:SS): ")
+            if fecha_evento.lower() == "fin":
+                break
+            descripcion = input("Descripción del evento: ")
+            bitacora["entradas"].append({
+                "fecha": fecha_evento,
+                "evento": descripcion
+            })
 
         nuevo_reporte = {
             "reporte_id": f"rep-{datetime.now().strftime('%Y%m%d-%H%M%S')}",
@@ -47,21 +66,19 @@ def subir_reporte_tecnico(tecnico_id):
             "Resumen": resumen,
             "Notas_tecnicas": notas_tecnicas,
             "estado": estado,
-            "Rutas": rutas
+            "Rutas": rutas,
+            "bitacora": bitacora
         }
 
         coleccion.insert_one(nuevo_reporte)
-        print("Reporte técnico guardado correctamente en MongoDB.")
+        print("Reporte técnico guardado correctamente en MongoDB con bitácora.")
 
     except Exception as e:
         print(f"Error al subir el reporte: {e}")
 
 
-
-#Funcion para consultar reportes técnicos en MongoDB
-#Permite buscar reportes técnicos en MongoDB por palabra clave o por campo específico.
 def consultar_reportes():
-
+   
     coleccion = conectar_mongo()
     if not coleccion:
         print("No se pudo acceder a la base de datos.")
@@ -87,7 +104,6 @@ def consultar_reportes():
         elif opcion == "2":
             campo = input("Ingrese el nombre del campo (por ejemplo: equipo_id, estado): ")
             valor = input(f"Ingrese el valor que desea buscar en '{campo}': ")
-
             resultados = list(coleccion.find({campo: valor}))
 
         else:
@@ -97,12 +113,27 @@ def consultar_reportes():
         print("\n--- Resultados encontrados ---")
         if resultados:
             for reporte in resultados:
-                print(f"Reporte ID: {reporte.get('reporte_id', 'N/A')}")
-                print(f"Equipo: {reporte.get('nombre_equipo', 'N/A')} | Estado: {reporte.get('estado', 'N/A')}")
-                print(f"Resumen: {reporte.get('Resumen', '')}")
-                print("-" * 40)
+                print(f"\n Reporte ID: {reporte.get('reporte_id', 'N/A')}")
+                print(f" Equipo: {reporte.get('nombre_equipo', 'N/A')} | Estado: {reporte.get('estado', 'N/A')}")
+                print(f" Resumen: {reporte.get('Resumen', '')}")
+                print(f" Notas técnicas:")
+                for nota in reporte.get("Notas_tecnicas", []):
+                    print(f"  - {nota}")
+                print(f"Archivos:")
+                for nombre, ruta in reporte.get("Rutas", {}).items():
+                    print(f"  {nombre}: {ruta}")
+
+                # Mostrar bitácora
+                bitacora = reporte.get("bitacora")
+                if bitacora:
+                    print(f"\n🗒 Bitácora iniciada el {bitacora.get('fecha_inicio')} por {bitacora.get('registro_por')}")
+                    for entrada in bitacora.get("entradas", []):
+                        print(f" {entrada['fecha']}: {entrada['evento']}")
+                print("-" * 50)
+
         else:
             print("No se encontraron reportes que coincidan con la búsqueda.")
 
     except Exception as e:
         print(f"Error al consultar los reportes: {e}")
+

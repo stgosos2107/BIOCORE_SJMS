@@ -19,7 +19,7 @@ def registrar_mantenimiento(equipo_id, descripcion, tipo, tecnico_id):
     try:
         conn = conexion()
         cursor = conn.cursor()
-        query = """INSERT INTO mantenimientos (equipo_id, descripcion, tipo, tecnico, fecha_mantenimiento)
+        query = """INSERT INTO mantenimientos (equipo_id, descripcion, tipo, tecnico_id, fecha_mantenimiento)
                    VALUES (%s, %s, %s, %s, CURDATE())"""
         cursor.execute(query, (equipo_id, descripcion, tipo, tecnico_id))
         conn.commit()

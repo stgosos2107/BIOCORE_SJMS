@@ -9,7 +9,7 @@ prueba directa de conexión que puede ejecutarse como script principal.
 import mysql.connector
 from mysql.connector import Error
 
-def conectar():
+def conexion():
     """
     Establece una conexión con la base de datos MySQL del proyecto.
 
@@ -42,6 +42,6 @@ if __name__ == "__main__":
     Prueba de ejecución directa para verificar que la conexión a la base de datos 
     se establece correctamente.
     """
-    conexion = conectar()
+    conexion = conexion()
     if conexion:
         conexion.close()

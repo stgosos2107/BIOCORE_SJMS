@@ -5,7 +5,7 @@ Módulo para gestionar los registros de mantenimientos de equipos médicos.
 import mysql.connector
 from database.conexion_mysql import conexion
 
-def registrar_mantenimiento(equipo_id, descripcion, tipo, tecnico):
+def registrar_mantenimiento(equipo_id, descripcion, tipo, tecnico_id):
     """
     Registra un mantenimiento para un equipo.
 
@@ -13,14 +13,15 @@ def registrar_mantenimiento(equipo_id, descripcion, tipo, tecnico):
         equipo_id (int): ID del equipo.
         descripcion (str): Descripción del mantenimiento.
         tipo (str): Tipo de mantenimiento (preventivo o correctivo).
-        tecnico (str): Nombre del técnico responsable.
+        tecnico_id (int): ID del técnico responsable.
+
     """
     try:
         conn = conexion()
         cursor = conn.cursor()
         query = """INSERT INTO mantenimientos (equipo_id, descripcion, tipo, tecnico, fecha_mantenimiento)
                    VALUES (%s, %s, %s, %s, CURDATE())"""
-        cursor.execute(query, (equipo_id, descripcion, tipo, tecnico))
+        cursor.execute(query, (equipo_id, descripcion, tipo, tecnico_id))
         conn.commit()
         cursor.close()
         conn.close()

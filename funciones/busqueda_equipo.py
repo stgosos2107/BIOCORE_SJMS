@@ -1,20 +1,29 @@
-equipos = [
-    {"id": "EQ001", "marca": "GE", "estado": "Operativo", "descripcion": "Monitor de signos vitales"},
-    {"id": "EQ002", "marca": "Philips", "estado": "En reparación", "descripcion": "Ventilador mecánico"},
-    {"id": "EQ003", "marca": "Siemens", "estado": "Pendiente", "descripcion": "Equipo de rayos X"}
-]
+"""
+Módulo para buscar equipos por ID en la base de datos MySQL.
+"""
 
-def buscar_equipo():
-    criterio = input("Buscar por estado, marca o palabra clave: ").lower()
-    encontrados = []
-    for eq in equipos:
-        if (criterio in eq["marca"].lower() or
-            criterio in eq["estado"].lower() or
-            criterio in eq["descripcion"].lower()):
-            encontrados.append(eq)
-    if encontrados:
-        print(" Equipos encontrados:")
-        for eq in encontrados:
-            print(f"- {eq['id']}: {eq['marca']} - {eq['estado']} - {eq['descripcion']}")
-    else:
-        print(" No se encontraron equipos con ese criterio.")
+import mysql.connector
+from database.conexion_mysql import conexion
+
+def buscar_equipo_por_id(equipo_id):
+    """
+    Busca un equipo en la base de datos MySQL usando su ID.
+
+    Parámetros:
+        equipo_id (int): ID del equipo a buscar.
+
+    Retorna:
+        dict: Información del equipo si se encuentra, None en caso contrario.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor(dictionary=True)
+        query = "SELECT * FROM equipos WHERE equipo_id = %s"
+        cursor.execute(query, (equipo_id,))
+        equipo = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return equipo
+    except mysql.connector.Error as err:
+        print(f"Error al buscar equipo: {err}")
+        return None

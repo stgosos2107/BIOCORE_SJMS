@@ -1,16 +1,13 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from funciones.tecnicos import crear_tecnico, listar_tecnicos, modificar_tecnico, eliminar_tecnico
 from funciones.busqueda_equipo import buscar_equipo
 from funciones.estadisticas import generar_estadisticas
-# Hace falta crear funcion------from funciones.usuarios import (funciones de usuarios)
-# Hace falta crear funcion------ from funciones.manuales import (funciones de manuales)
-
-
+from funciones.usuarios import crear_usuario, listar_usuarios, eliminar_usuario
+from funciones.manuales import cargar_manual, listar_manuales, eliminar_manual
 
 def menu_tecnicos():
+    """
+    Despliega el submenú para gestionar técnicos con opciones CRUD.
+    """
     while True:
         print("\n--- GESTIÓN DE TÉCNICOS ---")
         print("1. Registrar técnico")
@@ -32,7 +29,10 @@ def menu_tecnicos():
         else:
             print("Opción no válida.")
 
-def menu_usuarios(): #Hace falta crear la funcion de usuarios y capeta (BORRADOR)
+def menu_usuarios():
+    """
+    Despliega el submenú para crear, listar o eliminar usuarios.
+    """
     while True:
         print("\n--- GESTIÓN DE USUARIOS ---")
         print("1. Crear usuario")
@@ -51,23 +51,32 @@ def menu_usuarios(): #Hace falta crear la funcion de usuarios y capeta (BORRADOR
         else:
             print("Opción no válida.")
 
-def menu_manuales(): #Hace falta crear la funcion de manuales y carpeta(BORRADOR)
+def menu_manuales():
+    """
+    Despliega el submenú para gestionar los manuales técnicos.
+    """
     while True:
         print("\n--- MANUALES TÉCNICOS ---")
         print("1. Cargar manual")
         print("2. Listar manuales")
-        print("3. Volver al menú principal")
+        print("3. Eliminar manual")
+        print("4. Volver al menú principal")
         opcion = input("Elige una opción: ")
         if opcion == "1":
             cargar_manual()
         elif opcion == "2":
             listar_manuales()
         elif opcion == "3":
+            eliminar_manual()
+        elif opcion == "4":
             break
         else:
             print("Opción no válida.")
 
 def menu_admin():
+    """
+    Menú principal del administrador. Accede a las diferentes funciones del sistema.
+    """
     while True:
         print("\n=== MENÚ ADMINISTRADOR ===")
         print("1. Gestionar técnicos")

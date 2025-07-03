@@ -1,3 +1,9 @@
+"""Elaborado por: BioCore SJMS
+- Sofia Henao Osorio
+- Janna Valentina Castañeda Ruiz
+- María José Acelas León 
+- Santiago Osorio Salazar
+"""
 """
 main.py
 Sistema principal de gestión de mantenimiento biomédico - BIOCORE_SJMS.

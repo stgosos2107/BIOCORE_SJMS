@@ -42,4 +42,4 @@ def listar_tecnicos():
         return datos
     except mysql.connector.Error as err:
         print(f"Error al listar técnicos: {err}")
-        return[]
+        return []

@@ -65,7 +65,7 @@
       "imagen_despues": [
         "uploads/VEN-003_despues.jpg"
       ],
-      "manual_pdf": "uploads/VEN-003_manual.pdf",
+      "manual_pdf": "manuales/PB980-Operator's-Manual.pdf",
         "reporte_pdf": "uploads/VEN-003_reporte.pdf"
     },
     "bitacora_id": "bf-VEN-003-20250626"
@@ -111,7 +111,7 @@
       "imagenes_despues": [
         "uploads/MON-005_despues.jpg"
       ],
-      "manual_pdf": "uploads/MON-005_manual.pdf",
+      "manual_pdf": "manuales/MP_40_50_Rel.B.0_IntelliVue_Patient_Monitor-Service_Guide(ENG).pdf",
       "guia_rapida": "uploads/MON-005_guia.pdf"
     },
     "bitacora_id": "bf-MON-005-20250626"

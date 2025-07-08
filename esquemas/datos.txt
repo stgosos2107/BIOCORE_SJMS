@@ -1,0 +1,50 @@
+========= ESQUEMA DE DATOS =========
+
+ARCHIVO: datos/equipos.csv
+-----------------------------------
+- equipo_id: Código único del equipo (ej: ECG-001)
+- nombre_equipo: Nombre del equipo (ej: Electrocardiógrafo PageWriter TC70)
+- uso: Área clínica donde se utiliza (ej: Diagnóstico, Infusión)
+- marca: Marca del fabricante (ej: Philips, BD)
+- modelo: Modelo del equipo
+- ubicacion: Ubicación física del equipo en el hospital
+- fecha_registro: Fecha de ingreso al sistema (formato AAAA-MM-DD)
+- estado: Estado actual del equipo (Activo, Inactivo, Mantenimiento)
+- ruta_manual: Ruta al archivo de manual del equipo (ej: manuales_txt/ECG-001_manual.txt)
+
+ARCHIVO: datos/mantenimientos.csv
+-----------------------------------
+- mmto_id: Identificador único del mantenimiento (ej: mmto-001)
+- equipo_id: ID del equipo asociado (referencia a equipos.csv)
+- tecnico_id: ID del técnico que realizó el mantenimiento
+- tipo_mantenimiento: Preventivo o Correctivo
+- fecha_mantenimiento: Fecha en que se realizó (AAAA-MM-DD)
+- duracion_horas: Duración del mantenimiento en horas
+- observaciones: Observaciones relevantes del procedimiento
+
+ARCHIVO: datos/reportes.json
+----------------------------
+- reporte_id: ID único del reporte (ej: rep-20250626-0001)
+- mmto_id: Relación al mantenimiento realizado
+- equipo_id: ID del equipo asociado
+- nombre_equipo: Nombre del equipo
+- Tipo_reporte: Tipo de reporte técnico (diagnóstico, revisión, etc.)
+- reporte_fecha: Fecha y hora del registro en formato ISO
+- tecnico_id: ID del técnico que generó el reporte
+- Resumen: Resumen general del reporte
+- Notas_tecnicas: Detalles técnicos adicionales
+- estado: Estado del equipo tras la revisión
+- Rutas:
+    - imagenes_antes: Lista de rutas a imágenes antes del mantenimiento
+    - imagenes_despues: Lista de rutas a imágenes después del mantenimiento
+    - manual_pdf: Ruta al manual en PDF
+    - guia_rapida: Ruta a guía rápida
+- bitacora_id: Relación con el ID de bitácora
+
+ARCHIVO: datos/bitacoras.json
+-----------------------------
+- bitacora_id: ID único de la bitácora (ej: bf-ECG-001-20250626)
+- equipo_id: ID del equipo relacionado
+- fecha: Fecha de creación de la bitácora
+- entradas: Lista de eventos registrados (fecha + descripción)
+- registro_por: ID del técnico que registró la bitácora

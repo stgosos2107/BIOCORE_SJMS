@@ -1,0 +1,32 @@
+--CONTEXTO DE APLICACIÓN DEL SISTEMA EN UN ENTORNO HOSPITALARIO--
+
+El presente sistema de gestión técnica biomédica ha sido concebido para apoyar la trazabilidad, mantenimiento y documentación de los equipos médicos dentro de instituciones hospitalarias de mediana y alta complejidad. En un entorno donde los dispositivos biomédicos son fundamentales para la atención en cuidados críticos, quirófanos, hospitalización general y servicios diagnósticos, la implementación de un sistema de este tipo permite una administración técnica más eficiente, segura y estandarizada.
+
+Este sistema está orientado a ser utilizado por los departamentos de ingeniería clínica, los técnicos de mantenimiento biomédico, ingenieros responsables de equipos médicos y personal administrativo vinculado a la gestión de activos tecnológicos en salud. A través de su interfaz, el sistema permite llevar un registro detallado del personal técnico, control de manuales técnicos, seguimiento del estado de los equipos, búsqueda filtrada y generación de estadísticas operativas para la toma de decisiones,brindando una herramienta digital que centraliza la información operativa, técnica y documental de los dispositivos médicos. Su implementación facilita la trazabilidad de los equipos, el cumplimiento normativo y la planificación del mantenimiento.
+
+Entre sus funcionalidades clave destacan:
+
+- Gestión de técnicos: permite registrar y mantener actualizada la base de datos del personal técnico autorizado, con su especialidad, contacto y cédula profesional.
+- Gestión de usuarios del sistema: contempla roles diferenciados para garantizar la integridad de los datos (administrador, técnico, ingeniero).
+- Carga y consulta de manuales técnicos: asociados a cada equipo, se vinculan documentos como manuales de operación, servicio, hojas de datos y especificaciones técnicas.
+- Consulta de equipos: búsqueda por estado, palabra clave o fabricante para facilitar la localización y verificación rápida de inventario.
+- Generación de reportes: produce estadísticas útiles sobre la disponibilidad, distribución y operatividad del parque biomédico del hospital.
+
+Ciclo de Vida de un Equipo Biomédico en el Sistema:
+
+1. Adquisición: Registro inicial en el sistema con los datos del equipo, fecha de compra, proveedor y número de serie.
+2. Instalación y validación: Asignación a un área clínica específica y verificación de su funcionamiento conforme a las especificaciones del fabricante.
+3. Operación: Registro de uso clínico continuo. Durante esta etapa, el equipo puede generar alertas sobre mantenimientos próximos o posibles fallos.
+4. Mantenimiento preventivo: Programación periódica con base en los lineamientos del fabricante y las normativas nacionales/internacionales (como ISO 13485 o IEC 60601).
+5. Mantenimiento correctivo: Registro de fallas, responsables de la reparación y tiempos de inactividad, con el fin de evaluar la confiabilidad del equipo.
+6. Evaluación técnica: Análisis del comportamiento histórico del equipo para determinar su desempeño, criticidad clínica y riesgo asociado.
+7. Retiro o disposición final: Documentación del desuso, venta, reciclaje o baja definitiva por obsolescencia tecnológica o desgaste.
+
+Este ciclo es respaldado en todo momento por el sistema, que asegura que cada etapa quede documentada y disponible para consulta o auditoría técnica y administrativa. Adicionalmente, permite cumplir con normativas de calidad, acreditación institucional y estándares regulatorios exigidos por entes de vigilancia sanitaria.
+
+El sistema no solo mejora la eficiencia operativa del departamento técnico, sino que también contribuye de forma directa a la seguridad del paciente, la trazabilidad clínica y la sostenibilidad tecnológica de la institución. Su aplicación práctica fortalece la gestión hospitalaria basada en datos, mejora la planificación presupuestal y permite anticiparse a fallas críticas, garantizando continuidad en la atención.
+
+Este enfoque integral convierte al sistema en una herramienta estratégica para cualquier institución de salud comprometida con la calidad técnica y clínica.
+
+
+-- BIOCORE.SJMS --

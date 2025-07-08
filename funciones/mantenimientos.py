@@ -83,3 +83,4 @@ def eliminar_mantenimiento(mmto_id):
         print("✅ Mantenimiento eliminado.")
     except mysql.connector.Error as err:
         print(f"❌ Error al eliminar mantenimiento: {err}")
+ 

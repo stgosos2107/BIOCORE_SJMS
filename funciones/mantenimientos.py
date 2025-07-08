@@ -1,11 +1,86 @@
-mmto_id,equipo_id,tecnico_id,tipo_mantenimiento,fecha_mantenimiento,duracion_horas,observaciones
-mmto-001,ECG-001,tech001,Preventivo,2025-06-25,2,Revisión de electrodos y limpieza
-mmto-002,DEF-002,tech002,Correctivo,2025-06-25,3,Cambio de batería y calibración
-mmto-003,VEN-003,tech003,Preventivo,2025-06-24,2,Verificación de alarmas y flujo de aire
-mmto-004,INF-004,tech004,Preventivo,2025-06-24,1.5,Inspección de conectores y actualización de firmware
-mmto-005,MON-005,tech005,Correctivo,2025-06-23,2,Reemplazo de pantalla dañada
-mmto-006,ASP-006,tech006,Preventivo,2025-06-23,1,Lubricación de componentes móviles
-mmto-007,BIP-007,tech007,Correctivo,2025-06-22,3,Revisión del sensor de presión
-mmto-008,SUC-008,tech008,Correctivo,2025-06-22,2.5,Reemplazo de motor de succión
-mmto-009,RAD-009,tech009,Preventivo,2025-06-21,3,Calibración de imagen y revisión de software
-mmto-010,BOM-010,tech010,Preventivo,2025-06-21,1.5,Revisión de jeringa y válvulas
+"""
+Módulo para gestionar los registros de mantenimientos de equipos médicos.
+"""
+
+import mysql.connector
+from database.conexion_mysql import conexion
+
+def registrar_mantenimiento(equipo_id, descripcion, tipo, tecnico_id):
+    """
+    Registra un mantenimiento para un equipo.
+
+    Parámetros:
+        equipo_id (int): ID del equipo.
+        descripcion (str): Descripción del mantenimiento.
+        tipo (str): Tipo de mantenimiento (preventivo o correctivo).
+        tecnico_id (int): ID del técnico responsable.
+
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        query = """INSERT INTO mantenimientos (equipo_id, descripcion, tipo, tecnico_id, fecha_mantenimiento)
+                   VALUES (%s, %s, %s, %s, CURDATE())"""
+        cursor.execute(query, (equipo_id, descripcion, tipo, tecnico_id))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("✅ Mantenimiento registrado.")
+    except mysql.connector.Error as err:
+        print(f"❌ Error al registrar mantenimiento: {err}")
+
+def ver_mantenimientos():
+    """
+    Muestra todos los registros de mantenimiento.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM mantenimientos")
+        for fila in cursor.fetchall():
+            print(fila)
+        cursor.close()
+        conn.close()
+    except mysql.connector.Error as err:
+        print(f"❌ Error al consultar mantenimientos: {err}")
+
+def actualizar_mantenimiento(mmto_id, campo, nuevo_valor):
+    """
+    Actualiza un campo de un mantenimiento registrado.
+
+    Parámetros:
+        mantenimiento_id (int): ID del mantenimiento.
+        campo (str): Campo a modificar.
+        nuevo_valor (str): Nuevo valor.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        query = f"UPDATE mantenimientos SET {campo} = %s WHERE mmto_id = %s"
+        cursor.execute(query, (nuevo_valor, mmto_id))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("✅ Mantenimiento actualizado.")
+    except mysql.connector.Error as err:
+        print(f"❌ Error al actualizar mantenimiento: {err}")
+
+def eliminar_mantenimiento(mmto_id):
+    """
+    Elimina un mantenimiento por su ID.
+
+    Parámetros:
+        mantenimiento_id (int): ID del registro de mantenimiento.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        query = "DELETE FROM mantenimientos WHERE mantenimiento_id = %s"
+        cursor.execute(query, (mmto_id,))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("✅ Mantenimiento eliminado.")
+    except mysql.connector.Error as err:
+        print(f"❌ Error al eliminar mantenimiento: {err}")
+ 

@@ -1,0 +1,122 @@
+[
+  {
+    "reporte_id": "rep-20250627-165202-1",
+    "mmto_id": "mmto-001",
+    "equipo_id": "ECG-001",
+    "nombre_equipo": "Electrocardiógrafo PageWriter TC70",
+    "Tipo_reporte": "Revisión técnica general",
+    "reporte_fecha": "2025-06-27T16:52:02.395726",
+    "tecnico_id": "tech001",
+    "Resumen": "Se realizó inspección y mantenimiento al equipo Electrocardiógrafo PageWriter TC70.",
+    "Notas_tecnicas": "Equipo ubicado en Sala de Cardiología, marca Philips, modelo TC70. Se revisó según protocolo.",
+    "estado": "Activo",
+    "Rutas": {
+      "imagen_antes": [
+        "uploads/ECG-001_antes.jpg"
+      ],
+      "imagen_despues": [
+        "uploads/ECG-001_despues.jpg"
+      ],
+      "manual_pdf": "uploads/ECG-001_manual.pdf",
+      "reporte_pdf": "uploads/ECG-001_reporte.pdf"
+      
+    },
+    "bitacora_id": "bf-ECG-001-20250626"
+  },
+  {
+    "reporte_id": "rep-20250627-165202-2",
+    "mmto_id": "mmto-002",
+    "equipo_id": "DEF-002",
+    "nombre_equipo": "Desfibrilador Lifepak 20e",
+    "Tipo_reporte": "Revisión técnica general",
+    "reporte_fecha": "2025-06-27T16:52:02.395750",
+    "tecnico_id": "tech002",
+    "Resumen": "Se realizó inspección y mantenimiento al equipo Desfibrilador Lifepak 20e.",
+    "Notas_tecnicas": "Equipo ubicado en Urgencias, marca Physio-Control, modelo 20e. Se revisó según protocolo.",
+    "estado": "Activo",
+    "Rutas": {
+      "imagen_antes": [
+        "uploads/DEF-002_antes.jpg"
+      ],
+      "imagen_despues": [
+        "uploads/DEF-002_despues.jpg"
+      ],
+      "manual_pdf": "uploads/DEF-002_manual.pdf",
+        "reporte_pdf": "uploads/DEF-002_reporte.pdf"
+    
+    },
+    "bitacora_id": "bf-DEF-002-20250626"
+  },
+  {
+    "reporte_id": "rep-20250627-165202-3",
+    "mmto_id": "mmto-003",
+    "equipo_id": "VEN-003",
+    "nombre_equipo": "Ventilador Puritan Bennett 840",
+    "Tipo_reporte": "Revisión técnica general",
+    "reporte_fecha": "2025-06-27T16:52:02.395767",
+    "tecnico_id": "tech003",
+    "Resumen": "Se realizó inspección y mantenimiento al equipo Ventilador Puritan Bennett 840.",
+    "Notas_tecnicas": "Equipo ubicado en UCI Adultos, marca Medtronic, modelo 840. Se revisó según protocolo.",
+    "estado": "Mantenimiento",
+    "Rutas": {
+      "imagen_antes": [
+        "uploads/VEN-003_antes.jpg"
+      ],
+      "imagen_despues": [
+        "uploads/VEN-003_despues.jpg"
+      ],
+      "manual_pdf": "manuales/PB980-Operator's-Manual.pdf",
+        "reporte_pdf": "uploads/VEN-003_reporte.pdf"
+    },
+    "bitacora_id": "bf-VEN-003-20250626"
+  },
+  {
+    "reporte_id": "rep-20250627-165202-4",
+    "mmto_id": "mmto-004",
+    "equipo_id": "INF-004",
+    "nombre_equipo": "Bomba de Infusión Alaris",
+    "Tipo_reporte": "Revisión técnica general",
+    "reporte_fecha": "2025-06-27T16:52:02.395783",
+    "tecnico_id": "tech004",
+    "Resumen": "Se realizó inspección y mantenimiento al equipo Bomba de Infusión Alaris.",
+    "Notas_tecnicas": "Equipo ubicado en Hospitalización, marca BD, modelo 8015. Se revisó según protocolo.",
+    "estado": "Activo",
+    "Rutas": {
+      "imagenes_antes": [
+        "uploads/INF-004_antes.jpg"
+      ],
+      "imagenes_despues": [
+        "uploads/INF-004_despues.jpg"
+      ],
+      "manual_pdf": "uploads/INF-004_manual.pdf",
+      "guia_rapida": "uploads/INF-004_guia.pdf"
+    },
+    "bitacora_id": "bf-INF-004-20250626"
+  },
+  {
+    "reporte_id": "rep-20250627-165202-5",
+    "mmto_id": "mmto-005",
+    "equipo_id": "MON-005",
+    "nombre_equipo": "Monitor de Signos IntelliVue MX700",
+    "Tipo_reporte": "Revisión técnica general",
+    "reporte_fecha": "2025-06-27T16:52:02.396130",
+    "tecnico_id": "tech005",
+    "Resumen": "Se realizó inspección y mantenimiento al equipo Monitor de Signos IntelliVue MX700.",
+    "Notas_tecnicas": "Equipo ubicado en UCI Neonatal, marca Philips, modelo MX700. Se revisó según protocolo.",
+    "estado": "Activo",
+    "Rutas": {
+      "imagenes_antes": [
+        "uploads/MON-005_antes.jpg"
+      ],
+      "imagenes_despues": [
+        "uploads/MON-005_despues.jpg"
+      ],
+      "manual_pdf": "manuales/MP_40_50_Rel.B.0_IntelliVue_Patient_Monitor-Service_Guide(ENG).pdf",
+      "guia_rapida": "uploads/MON-005_guia.pdf"
+    },
+    "bitacora_id": "bf-MON-005-20250626"
+  }
+]
+
+
+  

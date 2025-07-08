@@ -1,0 +1,11 @@
+equipo_id,nombreEquipo,tipo,marca,modelo,ubicacion,fechaIngreso,estadoActual,manual
+ECG-001,Electrocardiógrafo PageWriter TC70,Diagnóstico,Philips,TC70,Sala de Cardiología,2025-06-26,Activo,manuales_txt/ECG-001_manual.txt
+DEF-002,Desfibrilador Lifepak 20e,Emergencia,Physio-Control,20e,Urgencias,2025-06-26,Activo,manuales_txt/DEF-002_manual.txt
+VEN-003,Ventilador Puritan Bennett 840,Soporte Vital,Medtronic,840,UCI Adultos,2025-06-26,Mantenimiento,manuales_txt/VEN-003_manual.txt
+INF-004,Bomba de Infusión Alaris,Infusión,BD,8015,Hospitalización,2025-06-26,Activo,manuales_txt/INF-004_manual.txt
+MON-005,Monitor de Signos IntelliVue MX700,Monitoreo,Philips,MX700,UCI Neonatal,2025-06-26,Activo,manuales_txt/MON-005_manual.txt
+ASP-006,Aspirador Quirúrgico Laerdal,Aspiración,Laerdal,LSU,Quirófano 1,2025-06-26,Inactivo,manuales_txt/ASP-006_manual.txt
+BIP-007,Ventilador BiPAP A30,Soporte Respiratorio,Philips,A30,Pediatría,2025-06-26,Activo,manuales_txt/BIP-007_manual.txt
+SUC-008,Sistema de Succión Gomco,Aspiración,Allied Healthcare,Gomco 405,Urgencias,2025-06-26,Mantenimiento,manuales_txt/SUC-008_manual.txt
+RAD-009,Rayos X móvil DRX-Revolution,Imagenología,Carestream,DRX,Radiología,2025-06-26,Activo,manuales_txt/RAD-009_manual.txt
+BOM-010,Bomba de jeringa Terumo TE-331,Infusión,Terumo,TE-331,Neonatología,2025-06-26,Activo,manuales_txt/BOM-010_manual.txt

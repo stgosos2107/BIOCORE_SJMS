@@ -1,5 +1,5 @@
 import mysql.connector
-from database.conexion_mysql import conectar_mysql
+from database.conexion_mysql import conexion
 
 def crear_usuario():
     """
@@ -15,7 +15,7 @@ def crear_usuario():
 
     La conexión a la base de datos se realiza mediante conectar_mysql().
     """
-    conn = conectar_mysql()
+    conn = conexion()
     cursor = conn.cursor()
     nombre = input("Nombre del usuario: ")
     correo = input("Correo del usuario: ")
@@ -34,7 +34,7 @@ def listar_usuarios():
 
     Recupera los registros de la tabla usuarios y los imprime línea por línea.
     """
-    conn = conectar_mysql()
+    conn = conexion()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM usuarios")
     for row in cursor.fetchall():
@@ -50,7 +50,7 @@ def eliminar_usuario():
     
     Requiere que el usuario exista en la tabla usuarios.
     """
-    conn = conectar_mysql()
+    conn = conexion()
     cursor = conn.cursor()
     id_usuario = input("ID del usuario a eliminar: ")
     cursor.execute("DELETE FROM usuarios WHERE id = %s", (id_usuario,))

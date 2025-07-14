@@ -29,7 +29,8 @@ def main():
         if opcion == "1":
             menu_admin()
         elif opcion == "2":
-            menu_tecnico()
+            tecnico_id = input("Ingresa tu ID de técnico: ")
+            menu_tecnico(tecnico_id)
         elif opcion == "3":
             menu_ingeniero()
         elif opcion == "4":

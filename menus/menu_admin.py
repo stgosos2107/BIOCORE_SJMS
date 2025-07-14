@@ -1,5 +1,5 @@
 from funciones.tecnicos import crear_tecnico, listar_tecnicos, modificar_tecnico, eliminar_tecnico
-from funciones.busqueda_equipo import buscar_equipo
+from funciones.busqueda_equipo import buscar_equipo_por_id
 from funciones.estadisticas import generar_estadisticas
 from funciones.usuarios import crear_usuario, listar_usuarios, eliminar_usuario
 from funciones.manuales import cargar_manual, listar_manuales, eliminar_manual
@@ -94,7 +94,7 @@ def menu_admin():
         elif opcion == "3":
             menu_manuales()
         elif opcion == "4":
-            buscar_equipo()
+            buscar_equipo_por_id()
         elif opcion == "5":
             generar_estadisticas()
         elif opcion == "6":

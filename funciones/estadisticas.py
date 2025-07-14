@@ -42,3 +42,17 @@ def total_por_marca():
     except mysql.connector.Error as err:
         print(f"Error al obtener estadísticas por marca: {err}")
         return[]
+    
+def generar_estadisticas():
+    """
+    Muestra estadísticas básicas de los equipos registrados.
+    """
+    print("\n--- ESTADÍSTICAS DEL SISTEMA ---\n")
+
+    total = total_equipos()
+    print(f"Total de equipos registrados: {total}")
+
+    marcas = total_por_marca()
+    print("\nEquipos por marca:")
+    for marca, cantidad in marcas:
+        print(f"- {marca}: {cantidad} equipos")

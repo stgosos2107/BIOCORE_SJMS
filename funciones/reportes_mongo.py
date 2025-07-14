@@ -7,7 +7,7 @@ from datetime import datetime
 def subir_reporte_tecnico(tecnico_id):
 
     coleccion = conectar_mongo()
-    if not coleccion:
+    if coleccion is None:
         print(" No se pudo acceder a la base de datos.")
         return
 

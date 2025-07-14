@@ -43,3 +43,36 @@ def listar_tecnicos():
     except mysql.connector.Error as err:
         print(f"Error al listar técnicos: {err}")
         return []
+    
+def eliminar_tecnico(tecnico_id):
+    """
+    Elimina un técnico de la base de datos por su ID.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM tecnicos WHERE tecnico_id = %s", (tecnico_id,))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("Técnico eliminado con éxito.")
+    except mysql.connector.Error as err:
+        print(f"Error al eliminar técnico: {err}")
+
+def modificar_tecnico(tecnico_id, nuevo_nombre, nueva_especialidad):
+    """
+    Modifica el nombre y/o especialidad de un técnico.
+    """
+    try:
+        conn = conexion()
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE tecnicos SET nombre = %s, especialidad = %s WHERE tecnico_id = %s",
+            (nuevo_nombre, nueva_especialidad, tecnico_id)
+        )
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("Técnico modificado con éxito.")
+    except mysql.connector.Error as err:
+        print(f"Error al modificar técnico: {err}")

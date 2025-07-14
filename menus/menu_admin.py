@@ -1,4 +1,4 @@
-from funciones.tecnicos import crear_tecnico, listar_tecnicos, modificar_tecnico, eliminar_tecnico
+from funciones.tecnicos import agregar_tecnico, listar_tecnicos, modificar_tecnico, eliminar_tecnico
 from funciones.busqueda_equipo import buscar_equipo_por_id
 from funciones.estadisticas import generar_estadisticas
 from funciones.usuarios import crear_usuario, listar_usuarios, eliminar_usuario
@@ -17,7 +17,7 @@ def menu_tecnicos():
         print("5. Volver al menú principal")
         opcion = input("Elige una opción: ")
         if opcion == "1":
-            crear_tecnico()
+            agregar_tecnico()
         elif opcion == "2":
             listar_tecnicos()
         elif opcion == "3":

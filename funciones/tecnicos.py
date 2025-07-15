@@ -4,7 +4,7 @@ Módulo para CRUD de técnicos en la base de datos.
 
 import mysql.connector
 from database.conexion_mysql import conexion
-from validaciones import validar_no_vacio  # Se asume que está en validaciones.py
+from funciones.validaciones import validar_no_vacio  # Se asume que está en validaciones.py
 
 def agregar_tecnico(nombre, especialidad):
     """

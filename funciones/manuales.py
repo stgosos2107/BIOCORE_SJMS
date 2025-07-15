@@ -1,6 +1,6 @@
 import os
 from database.conexion_mongo import conectar_mongo
-from validaciones import validar_no_vacio  # Usamos la validación que ya definiste
+from funciones.validaciones import validar_no_vacio  # Usamos la validación que ya definiste
 
 def cargar_manual():
     """

@@ -1,6 +1,6 @@
 import mysql.connector
 from database.conexion_mysql import conexion
-from validaciones import validar_no_vacio, validar_correo, validar_rol
+from funciones.validaciones import validar_no_vacio, validar_correo, validar_rol
 
 
 def crear_usuario():

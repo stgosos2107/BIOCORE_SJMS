@@ -4,11 +4,8 @@ Módulo para realizar operaciones CRUD sobre la tabla de equipos.
 
 import mysql.connector
 from database.conexion_mysql import conexion
-from validaciones import (
-    validar_no_vacio,
-    validar_estado,
-    validar_id_numerico
-)
+from funciones.validaciones import*
+
 
 def insertar_equipo(nombre, marca, modelo, ubicacion, estado, manual):
     """
@@ -61,7 +58,7 @@ def actualizar_equipo(equipo_id, campo, nuevo_valor):
     Actualiza un campo específico de un equipo.
     """
     try:
-        equipo_id = validar_id_numerico(str(equipo_id), "ID del equipo")
+        equipo_id = validar_equipo_id(str(equipo_id), "ID del equipo")
 
         conn = conexion()
         cursor = conn.cursor()
@@ -83,7 +80,7 @@ def eliminar_equipo(equipo_id):
     Elimina un equipo de la base de datos.
     """
     try:
-        equipo_id = validar_id_numerico(str(equipo_id), "ID del equipo")
+        equipo_id = validar_equipo_id(str(equipo_id), "ID del equipo")
 
         conn = conexion()
         cursor = conn.cursor()

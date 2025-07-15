@@ -8,7 +8,7 @@ Módulo para gestionar los registros de mantenimientos de equipos médicos.
 
 import mysql.connector
 from database.conexion_mysql import conexion
-from validaciones import (
+from funciones.validaciones import (
     validar_equipo_id,
     validar_no_vacio,
     validar_tipo_mantenimiento

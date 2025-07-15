@@ -1,6 +1,6 @@
 import re  # Módulo para trabajar con expresiones regulares
 from datetime import datetime  # Para validar y convertir fechas
-from database.conexion_mysql import conexion
+from database.conexion_mysql import*
 
 def validar_admin(usuario, contrasena):
     conexion = conexion()
@@ -73,13 +73,13 @@ def validar_tipo_mantenimiento(tipo):
 
 
 def validar_admin(usuario, contrasena):
-    conexion = conexion()
-    cursor = conexion.cursor(dictionary=True)
+    conn = conexion()
+    cursor = conn.cursor(dictionary=True)
 
     query = "SELECT * FROM administradores WHERE usuario = %s AND contrasena = %s"
     cursor.execute(query, (usuario, contrasena))
     resultado = cursor.fetchone()
 
     cursor.close()
-    conexion.close()
+    conn.close()
     return resultado is not None

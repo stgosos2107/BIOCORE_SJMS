@@ -3,7 +3,7 @@
 
 from database.conexion_mongo import conectar_mongo
 from datetime import datetime
-from validaciones import (
+from funciones.validaciones import (
     validar_no_vacio,
     validar_equipo_id,
     validar_tipo_mantenimiento,
@@ -92,7 +92,7 @@ def subir_reporte_tecnico(tecnico_id):
 
 def consultar_reportes():
     coleccion = conectar_mongo()
-    if not coleccion:
+    if coleccion is None:
         print("❌ No se pudo acceder a la base de datos.")
         return
 

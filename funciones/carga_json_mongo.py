@@ -1,6 +1,6 @@
 import json
 import os
-from validaciones import validar_no_vacio  
+from funciones.validaciones import validar_no_vacio  
 from database.conexion_mongo import conectar_mongo
 
 def cargar_reportes_completos_json():

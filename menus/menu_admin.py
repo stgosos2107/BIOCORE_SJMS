@@ -19,7 +19,7 @@ def menu_tecnicos():
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
-            registrar_tecnico()
+            agregar_tecnico()
         elif opcion == "2":
             listar_tecnicos()
         elif opcion == "3":
@@ -30,30 +30,6 @@ def menu_tecnicos():
             break
         else:
             print("Opción no válida.")
-
-
-def registrar_tecnico():
-    conexion = conexion()
-    cursor = conexion.cursor()
-
-    nombre = input("Nombre completo: ")
-    especialidad = input("Especialidad: ")
-    cedula = input("Cédula profesional: ")
-    correo = input("Correo institucional (@biocore.com): ")
-    telefono = input("Teléfono: ")
-
-    try:
-        cursor.execute("""
-            INSERT INTO tecnicos (nombre, especialidad, cedula_profesional, correo, telefono)
-            VALUES (%s, %s, %s, %s, %s)
-        """, (nombre, especialidad, cedula, correo, telefono))
-        conexion.commit()
-        print("✅ Técnico registrado exitosamente.")
-    except Exception as e:
-        print(f"❌ Error al registrar técnico: {e}")
-    finally:
-        cursor.close()
-        conexion.close()
 
 
 def listar_tecnicos():

@@ -1,6 +1,33 @@
 import re  # Módulo para trabajar con expresiones regulares
 from datetime import datetime  # Para validar y convertir fechas
+from database.conexion_mysql import conectar_mysql
 
+def validar_admin(usuario, contrasena):
+    conexion = conectar_mysql()
+    cursor = conexion.cursor(dictionary=True)
+
+    query = "SELECT * FROM administradores WHERE usuario = %s AND contrasena = %s"
+    cursor.execute(query, (usuario, contrasena))
+    resultado = cursor.fetchone()
+
+    cursor.close()
+    conexion.close()
+    return resultado is not None
+# Valida que el correo tenga un formato correcto
+def validar_correo(correo):
+    """
+    Valida que el correo tenga un formato correcto.
+    """
+    patron = r"^[\w\.-]+@[\w\.-]+\.\w+$"
+    if not re.match(patron, correo):
+        raise ValueError("El correo electrónico no tiene un formato válido.")
+    return correo
+# Valida que el rol del usuario sea uno de los permitidos
+def validar_rol(rol):
+    roles_validos = ["admin", "técnico", "ingeniero"]
+    if rol.lower() not in roles_validos:
+        raise ValueError(f"Rol inválido. Debe ser uno de: {', '.join(roles_validos)}.")
+    return rol.lower()
 # Valida que un campo no esté vacío (ni solo espacios)
 def validar_no_vacio(campo, nombre_campo):
     if not campo.strip():  # Si el campo está vacío después de quitar espacios

@@ -1,69 +1,73 @@
 import os
 from database.conexion_mongo import conectar_mongo
+from validaciones import validar_no_vacio  # Usamos la validación que ya definiste
 
 def cargar_manual():
     """
     Carga un archivo de manual técnico a la base de datos MongoDB.
-
-    Pasos que realiza:
-    1. Solicita el nombre del archivo de manual ubicado en la carpeta 'manuales'.
-    2. Verifica que el archivo exista.
-    3. Lee el contenido del archivo en formato texto.
-    4. Solicita el nombre del equipo al que pertenece el manual.
-    5. Inserta el documento en la colección 'manuales' de MongoDB, con los campos:
-       - 'equipo': nombre del equipo.
-       - 'manual': contenido textual del archivo.
-
-    Si el archivo no existe, se detiene y muestra un mensaje de error.
     """
     db = conectar_mongo()
     coleccion = db["manuales"]
-    archivo = input("Nombre del archivo de manual (ej. manual1.txt): ")
 
-    ruta = os.path.join("manuales", archivo)
-    if not os.path.exists(ruta):
-        print("❌ Archivo no encontrado.")
-        return
+    try:
+        archivo = input("Nombre del archivo de manual (ej. manual1.txt): ")
+        archivo = validar_no_vacio(archivo, "Archivo")
 
-    with open(ruta, "r", encoding="utf-8") as file:
-        contenido = file.read()
+        ruta = os.path.join("manuales", archivo)
+        if not os.path.exists(ruta):
+            print("❌ Archivo no encontrado.")
+            return
 
-    equipo = input("Nombre del equipo asociado: ")
-    documento = {"equipo": equipo, "manual": contenido}
-    coleccion.insert_one(documento)
-    print("✅ Manual cargado en MongoDB.")
+        with open(ruta, "r", encoding="utf-8") as file:
+            contenido = file.read()
+
+        equipo = input("Nombre del equipo asociado: ")
+        equipo = validar_no_vacio(equipo, "Equipo")
+
+        documento = {"equipo": equipo, "manual": contenido}
+        coleccion.insert_one(documento)
+        print("✅ Manual cargado en MongoDB.")
+
+    except ValueError as ve:
+        print(f"⚠ Error de validación: {ve}")
+    except Exception as e:
+        print(f"❌ Error inesperado: {e}")
+
 
 def listar_manuales():
     """
     Lista todos los manuales almacenados en MongoDB.
-
-    Recorre la colección 'manuales' y muestra:
-    - Nombre del equipo asociado.
-    - Primeros 60 caracteres del contenido del manual.
-
-    Esto permite visualizar rápidamente qué manuales están disponibles sin mostrar el contenido completo.
     """
     db = conectar_mongo()
     coleccion = db["manuales"]
-    for doc in coleccion.find():
-        print(f"📄 {doc['equipo']}: {doc['manual'][:60]}...")
+
+    try:
+        for doc in coleccion.find():
+            equipo = doc.get('equipo', 'Sin nombre')
+            preview = doc.get('manual', '')[:60]
+            print(f"📄 {equipo}: {preview}...")
+    except Exception as e:
+        print(f"❌ Error al listar manuales: {e}")
+
 
 def eliminar_manual():
     """
     Elimina un manual técnico asociado a un equipo específico en MongoDB.
-
-    Pasos que realiza:
-    1. Solicita el nombre del equipo cuyo manual se desea eliminar.
-    2. Busca y elimina el documento correspondiente en la colección 'manuales'.
-    3. Informa si se eliminó correctamente o si no se encontró el manual.
-
-    Esta función se basa en que los manuales están indexados por el nombre del equipo.
     """
     db = conectar_mongo()
     coleccion = db["manuales"]
-    equipo = input("Nombre del equipo cuyo manual deseas eliminar: ")
-    result = coleccion.delete_one({"equipo": equipo})
-    if result.deleted_count:
-        print("🗑 Manual eliminado.")
-    else:
-        print("❌ Manual no encontrado.")
+
+    try:
+        equipo = input("Nombre del equipo cuyo manual deseas eliminar: ")
+        equipo = validar_no_vacio(equipo, "Equipo")
+
+        result = coleccion.delete_one({"equipo": equipo})
+        if result.deleted_count:
+            print("🗑 Manual eliminado.")
+        else:
+            print("❌ Manual no encontrado.")
+
+    except ValueError as ve:
+        print(f"⚠ Error de validación: {ve}")
+    except Exception as e:
+        print(f"❌ Error inesperado: {e}")

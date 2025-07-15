@@ -15,6 +15,7 @@ Administrador, Técnico o Ingeniero.
 from menus.menu_admin import menu_admin
 from menus.menu_tecnico import menu_tecnico
 from menus.menu_ingeniero import menu_ingeniero
+from funciones.validaciones import validar_admin
 
 def main():
     while True:
@@ -27,7 +28,14 @@ def main():
         opcion = input("Elige una opción: ")
 
         if opcion == "1":
-            menu_admin()
+            usuario = input("Ingrese su usuario: ")
+            contrasena = input("Ingrese su contraseña: ")
+
+            if validar_admin(usuario, contrasena):
+                menu_admin()
+            else:
+                print("Credenciales incorrectas.")
+
         elif opcion == "2":
             tecnico_id = input("Ingresa tu ID de técnico: ")
             menu_tecnico(tecnico_id)
